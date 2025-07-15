@@ -99,6 +99,77 @@ To switch an existing project from HTTPS to SSH:
 ```bash
 git remote set-url origin git@github.com:username/repo.git
 ```
+---
+
+### 9. **Accidentally Using HTTPS? Fix It!**
+
+If you see something like this when pushing:
+
+```
+Username for 'https://github.com': your-username
+Password for 'https://your-username@github.com':
+remote: Support for password authentication was removed...
+fatal: Authentication failed
+```
+
+That means your repository is still using an **HTTPS remote**, which no longer supports password login.
+
+---
+
+### 🔄 Fix: Switch Remote URL from HTTPS to SSH
+
+First, check your current remote:
+
+```bash
+git remote -v
+```
+
+If you see something like:
+
+```
+origin  https://github.com/your-username/your-repo.git
+```
+
+Then change it to SSH:
+
+```bash
+git remote set-url origin git@github.com:your-username/your-repo.git
+```
+
+✅ Example:
+
+```bash
+git remote set-url origin git@github.com:PriyanshuKSharma/project-manage.git
+```
+
+Verify the change:
+
+```bash
+git remote -v
+```
+
+It should now show:
+
+```
+origin  git@github.com:PriyanshuKSharma/project-manage.git (fetch)
+origin  git@github.com:PriyanshuKSharma/project-manage.git (push)
+```
+
+---
+
+### 🚀 Try Pushing Again
+
+Now push your changes:
+
+```bash
+git push origin main
+```
+
+You should **not** be asked for a username or password. SSH will authenticate you automatically.
+
+---
+
+### ✅ You're All Set!
 
 ---
 
